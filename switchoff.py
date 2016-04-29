@@ -22,6 +22,7 @@ class Shutdown(object):
 
     # Define a function to run when an interrupt is called
     def shutdown(self, pin):
+        gpio.output(self.keep_powered_pin, 0)
         call('halt', shell=False)
 
     def setup(self):
