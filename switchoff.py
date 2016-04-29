@@ -1,6 +1,8 @@
 #THIS CODE HAS NOT BEEN TESTED
 #USE AT OWN RISK
 #http://www.raspberry-pi-geek.com/Archive/2013/01/Adding-an-On-Off-switch-to-your-Raspberry-Pi
+
+# This is OBSOLETE
 # Import the modules to send commands to the system and access GPIO pins
 #
 #to auto start this script do:
@@ -9,10 +11,36 @@
 #  python /home/pi/PiSupply/softshut.py
 #before
 #  exit 0
+# now do this
+# make /lib/systemd/system/myscript.service
+# and add
+#
+#[Unit]
+#Description=My Script Service
+#After=multi-user.target
+#
+#[Service]
+#Type=idle
+#ExecStart=/usr/bin/python /home/pi/switchoff.py
+#
+#[Install]
+#WantedBy=multi-user.targe
+#
+#sudo chmod 644 /lib/systemd/system/myscript.service
+#sudo systemctl daemon-reload
+#sudo systemctl enable myscript.service
+#the reboot
+#to check if it works
+#sudo systemctl status myscript.service
+#to log output of the script:
+#add ExecStart=/usr/bin/python /home/pi/myscript.py > /home/pi/myscript.log 2>&1 to
+#script file
+#http://www.raspberrypi-spy.co.uk/2015/10/how-to-autorun-a-python-script-on-boot-using-systemd/
 
 
 from subprocess import call
 import RPi.GPIO as gpio
+import time
 
 class Shutdown(object):
 
@@ -33,7 +61,8 @@ class Shutdown(object):
         gpio.setup(self.keep_powered_pin, gpio.OUT, initial=gpio.HIGH)
 
     def loop(self):
-	raw_input()
+	while True:
+            time.sleep(10)
 
 if __name__ == '__main__':
     instance = Shutdown()
