@@ -3,7 +3,7 @@
 A switch for the raspberry pi to properly turn it off.
 ![alt text] (./rps.png)
 ##schematic
-![alt text] (/rps.sch.png)
+![alt text] (./rps.sch.png)
 It is based on this article:
 http://www.raspberry-pi-geek.com/Archive/2013/01/Adding-an-On-Off-switch-to-your-Raspberry-Pi/(offset)/4
 
