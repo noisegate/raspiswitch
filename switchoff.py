@@ -7,10 +7,16 @@
 #
 #to auto start this script do:
 #  sudo nano /etc/rc.local
+#
 #add this line
 #  python /home/pi/PiSupply/softshut.py
 #before
 #  exit 0
+##
+# NEW APPROACH
+# ----------------------------
+# In Jessie we do it this way:
+# ----------------------------
 # now do this
 # make /lib/systemd/system/myscript.service
 # and add
