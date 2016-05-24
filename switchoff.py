@@ -30,7 +30,7 @@
 #ExecStart=/usr/bin/python /home/pi/switchoff.py
 #
 #[Install]
-#WantedBy=multi-user.targe
+#WantedBy=multi-user.target
 #
 #sudo chmod 644 /lib/systemd/system/myscript.service
 #sudo systemctl daemon-reload
